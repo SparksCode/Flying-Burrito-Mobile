@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "443393597992",
+    "firebase_url": "https://flying-burrito-mobile.firebaseio.com",
+    "project_id": "flying-burrito-mobile",
+    "storage_bucket": "flying-burrito-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443393597992:android:ae3b26c0095d88cc",
+        "android_client_info": {
+          "package_name": "com.flyingburritoco.mobilemenu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443393597992-tkq84f74v0m654usp882ci3hthrhqan3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flyingburritoco.mobilemenu",
+            "certificate_hash": "f2fec1066124e56266c6b4bc03b9bddd3b37abf8"
+          }
+        },
+        {
+          "client_id": "443393597992-vrns7edlcs6daistmf4brtlog0j2sr2g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Yv4E_8AFRyvA2nqDMLDWnqrgI3F8jSs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443393597992-vrns7edlcs6daistmf4brtlog0j2sr2g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
