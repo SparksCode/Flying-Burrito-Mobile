@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#B21707</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#39796b</color>
+    <color name="colorAccent">#FFBA00</color>
 
     <color name="btnSignUp">#B21707</color>
     <color name="btnSignActive">#FFBA00</color>
