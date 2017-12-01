@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.util.Log;
 
 import com.flyingburritoco.mobilemenu.Model.Order;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -32,10 +33,13 @@ public class Database extends SQLiteAssetHelper{
         qb.setTables(sqlTable);
         Cursor c = qb.query(db, sqlSelect, null,null,null,null,null);
 
+
+
         final List<Order> result = new ArrayList<>();
+        Log.d("test", String.valueOf(c.getColumnIndex("ProductID")));
         if(c.moveToFirst()){
             do{
-                result.add(new Order(c.getString(c.getColumnIndex("ProductId")),
+                result.add(new Order(c.getString(c.getColumnIndex("ProductID")),
                         c.getString(c.getColumnIndex("ProductName")),
                         c.getString(c.getColumnIndex("Quantity")),
                         c.getString(c.getColumnIndex("Price")),
