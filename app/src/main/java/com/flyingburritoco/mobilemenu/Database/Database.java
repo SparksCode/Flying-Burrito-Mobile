@@ -26,7 +26,7 @@ public class Database extends SQLiteAssetHelper{
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String[] sqlSelect={"ProductName","ProductID","Quantity","Price","Discount"};
+        String[] sqlSelect={"ProductID","ProductName","Quantity","Price","Discount"};
         String sqlTable = "OrderDetail";
 
         qb.setTables(sqlTable);
