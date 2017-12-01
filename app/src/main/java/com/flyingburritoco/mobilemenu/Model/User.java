@@ -10,11 +10,10 @@ public class User {
 
     }
 
-    public User(String Email, String Name, String Password, String Phone){
+    public User(String Email, String Name, String Password){
         this.Email = Email;
         this.Name = Name;
         this.Password = Password;
-        this.Phone = Phone;
     }
 
     public String getPhone() {
