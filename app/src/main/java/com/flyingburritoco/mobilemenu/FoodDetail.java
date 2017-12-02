@@ -49,8 +49,6 @@ public class FoodDetail extends AppCompatActivity {
 
     Food currentFood;
 
-    ArrayList selectedExtras;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

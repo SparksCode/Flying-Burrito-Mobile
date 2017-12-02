@@ -14,8 +14,6 @@ import com.flyingburritoco.mobilemenu.Interface.ItemClickListener;
 import com.flyingburritoco.mobilemenu.Model.Order;
 import com.flyingburritoco.mobilemenu.R;
 
-import org.w3c.dom.Text;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +55,9 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
     public CartViewHolder(View itemView) {
         super(itemView);
-        itemName = (TextView)itemView.findViewById(R.id.itemName);
-        itemPrice = (TextView)itemView.findViewById(R.id.itemPrice);
-        itemCount = (ImageView)itemView.findViewById(R.id.itemCount);
+        itemName = itemView.findViewById(R.id.itemName);
+        itemPrice = itemView.findViewById(R.id.itemPrice);
+        itemCount = itemView.findViewById(R.id.itemCount);
     }
 
     @Override

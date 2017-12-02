@@ -25,7 +25,11 @@
         <item>Salsa of the Day</item>
     </string-array>
     <string-array name="locations">
-        <item>location</item>
+        <item>540 W. Dickson St. Fayetteville, AR 72701</item>
+        <item>3200 N. College Ave. Fayetteville, AR 72703</item>
+        <item>7022 W. Sunset Ave. Springdale, AR 72762</item>
+        <item>1401 S. Walton Blvd. Bentonville, AR 72712</item>
+        <item>435 N. Garland Ave Fayetteville, AR 72701</item>
     </string-array>
 
 </resources>

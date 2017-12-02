@@ -9,7 +9,7 @@ import java.util.List;
 public class Request {
     private String phone;
     private String name;
-    private String address;
+    private String store;
     private String total;
     private String status;
     private List<Order> foods;
@@ -17,10 +17,10 @@ public class Request {
     public Request() {
     }
 
-    public Request(String phone, String name, String address, String total, List<Order> foods) {
+    public Request(String phone, String name, String store, String total, List<Order> foods) {
         this.phone = phone;
         this.name = name;
-        this.address = address;
+        this.store = store;
         this.total = total;
         this.foods = foods;
         this.status = "0";
@@ -51,12 +51,12 @@ public class Request {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStore() {
+        return store;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStore(String store) {
+        this.store = store;
     }
 
     public String getTotal() {

@@ -50,7 +50,7 @@ public class OrderStatus extends AppCompatActivity {
             protected void populateViewHolder(OrderViewHolder viewHolder, Request model, int position) {
                 String orderId = "Order Number #" + adapter.getRef(position).getKey();
                 String userPhone = "Member: " + model.getPhone();
-                String pickUp = "Pickup at: " + model.getAddress();
+                String pickUp = "Pickup at: " + model.getStore();
 
                 viewHolder.txtOrderId.setText(orderId);
                 viewHolder.txtOrderStatus.setText(convertCodeToStatus(model.getStatus()));

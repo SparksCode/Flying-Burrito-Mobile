@@ -1,5 +1,6 @@
 package com.flyingburritoco.mobilemenu;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -44,12 +45,14 @@ public class Cart extends AppCompatActivity {
     List<Order> cart = new ArrayList<>();
     CartAdapter adapter;
 
+    String storeLocation="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        //Firebase
+        //Firebase Initialization
         database = FirebaseDatabase.getInstance();
         requests = database.getReference("Request");
 
@@ -80,13 +83,6 @@ public class Cart extends AppCompatActivity {
         alertDialog.setTitle("Cancel Order");
         alertDialog.setMessage("Would you like to cancel your order?");
 
-        final EditText edtAddress = new EditText(Cart.this);
-
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
-
         alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
 
         alertDialog.setPositiveButton("Continue Order", new DialogInterface.OnClickListener() {
@@ -108,52 +104,52 @@ public class Cart extends AppCompatActivity {
         alertDialog.show();
     }
     private void showPlaceDialog(){
-            AlertDialog.Builder alertDialog =new AlertDialog.Builder(Cart.this);
-            //alertDialog.setTitle("");
-            alertDialog.setMessage("Enter your address: ");
-
-            final EditText edtAddress = new EditText(Cart.this);
-
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT
-            );
-
-            edtAddress.setLayoutParams(lp);
-            alertDialog.setView(edtAddress);
-            alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
-
-            alertDialog.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-
-            alertDialog.setNegativeButton("ENTER", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                    Request request = new Request(
-                            Common.currentUser.getPhone(),
-                            Common.currentUser.getName(),
-                            edtAddress.getText().toString(),
-                            txtTotalPrice.getText().toString(),
-                            cart
-                    );
-
-                    requests.child(String.valueOf(System.currentTimeMillis()))
-                    .setValue(request);
-
-                    new Database(getBaseContext()).cleanCart();
-                    Toast.makeText(Cart.this, "Your Order Has Been Placed", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            });
-
-            alertDialog.show();
+        final Dialog dialog;
+        final ArrayList locationSelected = new ArrayList();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Extras!");
+        builder.setSingleChoiceItems(R.array.locations, 0, null)
+                .setIcon(R.drawable.ic_restaurant_black_24dp)
+                .setPositiveButton("ENTER", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int selectedPosition = ((AlertDialog)dialogInterface).getListView().getCheckedItemPosition();
+                        convertLocation(selectedPosition);
+                        submitOrder();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        dialog = builder.create();
+        dialog.show();
     }
 
+    private void convertLocation(int selectedPosition){
+        String[] locationList = getResources().getStringArray(R.array.locations);
+        storeLocation = locationList[selectedPosition];
+
+
+    }
+    private void submitOrder(){
+        Request request = new Request(
+                Common.currentUser.getPhone(),
+                Common.currentUser.getName(),
+                storeLocation,
+                txtTotalPrice.getText().toString(),
+                cart
+        );
+
+        requests.child(String.valueOf(System.currentTimeMillis()))
+                .setValue(request);
+
+        new Database(getBaseContext()).cleanCart();
+        Toast.makeText(Cart.this, "Your Order Has Been Placed", Toast.LENGTH_SHORT).show();
+        finish();
+    }
     private void loadListFood(){
         cart = new Database(this).getCarts();
         adapter = new CartAdapter(cart, this);
@@ -162,7 +158,6 @@ public class Cart extends AppCompatActivity {
         //Calculate Total Price
         int total = 0;
         for(Order order:cart){
-            Log.d("Test Order", String.valueOf(order.getProductID()));
             total += (Double.parseDouble(order.getPrice())) * (Double.parseDouble(order.getQuantity()));
         }
         Locale locale = new Locale("en","US");
