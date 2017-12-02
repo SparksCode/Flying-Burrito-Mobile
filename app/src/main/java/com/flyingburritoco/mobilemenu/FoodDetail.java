@@ -42,6 +42,7 @@ public class FoodDetail extends AppCompatActivity {
     ElegantNumberButton numberButton;
 
     String foodId="";
+    String extra="";
 
     FirebaseDatabase database;
     DatabaseReference foods;
@@ -108,6 +109,7 @@ public class FoodDetail extends AppCompatActivity {
                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        convertExtras(extraSelected);
                         submitOrder();
                     }
                 })
@@ -122,10 +124,23 @@ public class FoodDetail extends AppCompatActivity {
 
     }
 
+    private void convertExtras(ArrayList extraSelected){
+        for(Object element : extraSelected){
+            String[] extraList = getResources().getStringArray(R.array.extras);
+            if (extra.isEmpty()){
+                extra = String.valueOf(extraList[(int) element]);
+            }
+            else {
+                extra += (", " + extraList[(int) element]);
+            }
+        }
+    }
+
     private void submitOrder() {
         new Database(getBaseContext()).addToCart(new Order(
                 foodId,
                 currentFood.getName(),
+                extra,
                 numberButton.getNumber(),
                 currentFood.getPrice(),
                 currentFood.getDiscount()
@@ -136,46 +151,6 @@ public class FoodDetail extends AppCompatActivity {
         startActivity(menuIntent);
     }
 
-    public Dialog onCreateDialog(Bundle savedInstanceState){
-        AlertDialog.Builder builder = new AlertDialog.Builder(FoodDetail.this);
-        builder.setTitle("Extras!")
-                .setMultiChoiceItems(R.array.extras, null, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                        if(b){
-                            selectedExtras.add(i);
-                        }
-                        else if(selectedExtras.contains(i)){
-                            selectedExtras.remove(Integer.valueOf(i));
-                        }
-                    }
-                })
-        .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        })
-        .setNegativeButton("ENTER", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                new Database(getBaseContext()).addToCart(new Order(
-                        foodId,
-                        currentFood.getName(),
-                        numberButton.getNumber(),
-                        currentFood.getPrice(),
-                        currentFood.getDiscount()
-                ));
-
-                Toast.makeText(FoodDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-
-
-        return builder.create();
-    }
     private void getDetailFood(String foodId){
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override

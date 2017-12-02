@@ -50,21 +50,46 @@
 
             </LinearLayout>
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/btnPlaceOrder"
-                android:text="PlaceOrder"
-                android:textColor="@android:color/white"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_alignParentBottom="true"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:weightSum="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:buttonColor="@color/colorPrimary"
-                app:cornerRadius="4dp"
-                app:shadowColor="@android:color/white"
-                app:shadowEnabled="true"
-                app:shadowHeight="5dp"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true">
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btnPlaceOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Place Order"
+                    android:textColor="@android:color/white"
+                    app:buttonColor="@color/colorPrimary"
+                    app:cornerRadius="3dp"
+                    app:shadowColor="@color/colorAccent"
+                    app:shadowEnabled="true"
+                    app:shadowHeight="1.5dp"
+                    tools:ignore="HardcodedText" />
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btnCancelOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Cancel Order"
+                    android:textColor="@android:color/white"
+                    app:buttonColor="@color/colorPrimary"
+                    app:cornerRadius="3dp"
+                    app:shadowColor="@color/colorAccent"
+                    app:shadowEnabled="true"
+                    app:shadowHeight="1.5dp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
 
         </RelativeLayout>
 

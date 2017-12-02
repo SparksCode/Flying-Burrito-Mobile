@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -38,6 +39,7 @@ public class Cart extends AppCompatActivity {
 
     TextView txtTotalPrice;
     FButton btnPlace;
+    FButton btnCancel;
 
     List<Order> cart = new ArrayList<>();
     CartAdapter adapter;
@@ -58,19 +60,22 @@ public class Cart extends AppCompatActivity {
 
         txtTotalPrice = (TextView)findViewById(R.id.total);
         btnPlace = (FButton)findViewById(R.id.btnPlaceOrder);
+        btnCancel = (FButton)findViewById(R.id.btnCancelOrder);
 
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {showPlaceDialog();}
+        });
 
-                showAlertDialog();
-            }
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {new Database(getBaseContext()).cleanCart();}
         });
 
         loadListFood();
     }
 
-    private void showAlertDialog(){
+    private void showPlaceDialog(){
             AlertDialog.Builder alertDialog =new AlertDialog.Builder(Cart.this);
             //alertDialog.setTitle("");
             alertDialog.setMessage("Enter your address: ");
@@ -124,8 +129,10 @@ public class Cart extends AppCompatActivity {
 
         //Calculate Total Price
         int total = 0;
-        for(Order order:cart)
-            total+=(Double.parseDouble(order.getPrice())) * (Double.parseDouble(order.getQuantity()));
+        for(Order order:cart){
+            Log.d("Test Order", String.valueOf(order.getProductID()));
+            total += (Double.parseDouble(order.getPrice())) * (Double.parseDouble(order.getQuantity()));
+        }
         Locale locale = new Locale("en","US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
 
