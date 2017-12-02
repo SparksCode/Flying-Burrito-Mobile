@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="extras">
+        <item>Refried Beans</item>
+        <item>Pinto Beans</item>
+        <item>Black Beans</item>
+        <item>Rice</item>
+        <item>Grilled Peppers</item>
+        <item>Onions</item>
+        <item>Tomatoes</item>
+        <item>Lettuce</item>
+        <item>Red Onions</item>
+        <item> Yellow Corn</item>
+        <item>Black Olives</item>
+        <item>Fresh Jalapeños</item>
+        <item>Pickled Jalapeños</item>
+        <item>Potatoes</item>
+        <item>Shredded Cheese</item>
+        <item>Sour Cream</item>
+        <item>Ranch</item>
+        <item>Spicy Ranch</item>
+        <item>Mild Salsa</item>
+        <item>Hot Salsa</item>
+        <item>Pico de Gallo</item>
+        <item>Salsa of the Day</item>
+    </string-array>
+
+</resources>

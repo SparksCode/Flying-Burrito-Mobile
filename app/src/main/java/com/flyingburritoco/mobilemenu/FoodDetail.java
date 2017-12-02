@@ -1,24 +1,37 @@
 package com.flyingburritoco.mobilemenu;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.flyingburritoco.mobilemenu.Common.Common;
 import com.flyingburritoco.mobilemenu.Database.Database;
 import com.flyingburritoco.mobilemenu.Model.Food;
 import com.flyingburritoco.mobilemenu.Model.Order;
+import com.flyingburritoco.mobilemenu.Model.Request;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FoodDetail extends AppCompatActivity {
 
@@ -34,6 +47,8 @@ public class FoodDetail extends AppCompatActivity {
     DatabaseReference foods;
 
     Food currentFood;
+
+    ArrayList selectedExtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +73,8 @@ public class FoodDetail extends AppCompatActivity {
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Database(getBaseContext()).addToCart(new Order(
-                        foodId,
-                        currentFood.getName(),
-                        numberButton.getNumber(),
-                        currentFood.getPrice(),
-                        currentFood.getDiscount()
-                ));
-
-                Toast.makeText(FoodDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                extraDialog();
+                //extraIngredients();
             }
         });
         numberButton = (ElegantNumberButton)findViewById(R.id.number_button);
@@ -80,6 +88,94 @@ public class FoodDetail extends AppCompatActivity {
         }
     }
 
+    public void extraDialog(){
+        Dialog dialog;
+        final ArrayList extraSelected = new ArrayList();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Extras!");
+        builder.setMultiChoiceItems(R.array.extras, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                if(b){
+                    extraSelected.add(i);
+                }
+                else if(extraSelected.contains(i)){
+                    extraSelected.remove(Integer.valueOf(i));
+                }
+            }
+        })
+                .setIcon(R.drawable.ic_restaurant_black_24dp)
+                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        submitOrder();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        dialog = builder.create();
+        dialog.show();
+
+    }
+
+    private void submitOrder() {
+        new Database(getBaseContext()).addToCart(new Order(
+                foodId,
+                currentFood.getName(),
+                numberButton.getNumber(),
+                currentFood.getPrice(),
+                currentFood.getDiscount()
+        ));
+        Toast.makeText(FoodDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+
+        Intent menuIntent = new Intent(FoodDetail.this, Home.class);
+        startActivity(menuIntent);
+    }
+
+    public Dialog onCreateDialog(Bundle savedInstanceState){
+        AlertDialog.Builder builder = new AlertDialog.Builder(FoodDetail.this);
+        builder.setTitle("Extras!")
+                .setMultiChoiceItems(R.array.extras, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        if(b){
+                            selectedExtras.add(i);
+                        }
+                        else if(selectedExtras.contains(i)){
+                            selectedExtras.remove(Integer.valueOf(i));
+                        }
+                    }
+                })
+        .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        })
+        .setNegativeButton("ENTER", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                new Database(getBaseContext()).addToCart(new Order(
+                        foodId,
+                        currentFood.getName(),
+                        numberButton.getNumber(),
+                        currentFood.getPrice(),
+                        currentFood.getDiscount()
+                ));
+
+                Toast.makeText(FoodDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+        return builder.create();
+    }
     private void getDetailFood(String foodId){
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override
