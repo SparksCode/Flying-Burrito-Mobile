@@ -69,12 +69,44 @@ public class Cart extends AppCompatActivity {
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {new Database(getBaseContext()).cleanCart();}
+            public void onClick(View view) {showCancelDialog();}
         });
 
         loadListFood();
     }
 
+    private void showCancelDialog(){
+        AlertDialog.Builder alertDialog =new AlertDialog.Builder(Cart.this);
+        alertDialog.setTitle("Cancel Order");
+        alertDialog.setMessage("Would you like to cancel your order?");
+
+        final EditText edtAddress = new EditText(Cart.this);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        );
+
+        alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+
+        alertDialog.setPositiveButton("Continue Order", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        alertDialog.setNegativeButton("Cancel Order", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                new Database(getBaseContext()).cleanCart();
+                Toast.makeText(Cart.this, "Your Order Has Been Cancelled", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        alertDialog.show();
+    }
     private void showPlaceDialog(){
             AlertDialog.Builder alertDialog =new AlertDialog.Builder(Cart.this);
             //alertDialog.setTitle("");
