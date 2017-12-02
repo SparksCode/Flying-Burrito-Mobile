@@ -136,17 +136,20 @@ public class Home extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation view item clicks
         int id = item.getItemId();
 
         if (id == R.id.nav_menu) {
-            // Handle the camera action
         } else if (id == R.id.nav_cart) {
-
+            Intent cartIntent = new Intent(Home.this, Cart.class);
+            startActivity(cartIntent);
         } else if (id == R.id.nav_orders) {
-
+            Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+            startActivity(orderIntent);
         } else if (id == R.id.nav_log_out) {
-
+            Intent mainIntent = new Intent(Home.this, MainActivity.class);
+            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(mainIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

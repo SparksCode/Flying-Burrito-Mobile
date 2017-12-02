@@ -125,7 +125,7 @@ public class Cart extends AppCompatActivity {
         //Calculate Total Price
         int total = 0;
         for(Order order:cart)
-            total+=(Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
+            total+=(Double.parseDouble(order.getPrice())) * (Double.parseDouble(order.getQuantity()));
         Locale locale = new Locale("en","US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
 
