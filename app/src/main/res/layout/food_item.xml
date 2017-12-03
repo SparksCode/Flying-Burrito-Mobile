@@ -16,10 +16,12 @@
             android:scaleType="centerCrop"
             android:src="@drawable/background1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
         <TextView
             android:id="@+id/food_name"
-            android:text="Name of Food"
+            android:text="@string/food"
             android:textColor="@android:color/white"
             android:background="@color/overlayBackground"
             android:textSize="20sp"

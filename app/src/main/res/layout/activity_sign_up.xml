@@ -17,7 +17,7 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPhone"
-            android:hint="Phone Number"
+            android:hint="@string/phoneHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
@@ -33,7 +33,7 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtName"
-            android:hint="Name"
+            android:hint="@string/nameHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
@@ -49,7 +49,7 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtEmail"
-            android:hint="Email"
+            android:hint="@string/emailHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
@@ -65,7 +65,7 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPassword"
-            android:hint="Password"
+            android:hint="@string/passwordHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
@@ -91,7 +91,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:onClick="signUpPressed"
         app:buttonColor="@color/btnSignUp"
         app:cornerRadius="3dp"
         app:shadowColor="@android:color/darker_gray"
