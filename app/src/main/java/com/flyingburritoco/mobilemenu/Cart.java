@@ -45,6 +45,9 @@ public class Cart extends AppCompatActivity {
     List<Order> cart = new ArrayList<>();
     CartAdapter adapter;
 
+
+    String cartStatus="empty";
+
     String storeLocation="";
 
     @Override
@@ -67,12 +70,21 @@ public class Cart extends AppCompatActivity {
 
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {showPlaceDialog();}
+            public void onClick(View view) {
+                if(cartStatus == "full") {
+                    showPlaceDialog();
+                }
+                else{
+                    Toast.makeText(Cart.this, "Your Cart Is Empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {showCancelDialog();}
+            public void onClick(View view) {
+                showCancelDialog();
+            }
         });
 
         loadListFood();
@@ -105,7 +117,6 @@ public class Cart extends AppCompatActivity {
     }
     private void showPlaceDialog(){
         final Dialog dialog;
-        final ArrayList locationSelected = new ArrayList();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Extras!");
         builder.setSingleChoiceItems(R.array.locations, 0, null)
@@ -158,6 +169,7 @@ public class Cart extends AppCompatActivity {
         //Calculate Total Price
         int total = 0;
         for(Order order:cart){
+            cartStatus = "full";
             total += (Double.parseDouble(order.getPrice())) * (Double.parseDouble(order.getQuantity()));
         }
         Locale locale = new Locale("en","US");
