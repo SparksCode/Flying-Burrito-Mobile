@@ -19,6 +19,7 @@ public class SignUp extends AppCompatActivity {
 
     MaterialEditText edtPhone, edtName, edtEmail, edtPassword;
     Button btnSignUp;
+    Boolean newUser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +56,14 @@ public class SignUp extends AppCompatActivity {
                         if (dataSnapshot.child(edtPhone.getText().toString()).exists())
                         {
                             mDialog.dismiss();
-                            Toast.makeText(SignUp.this, "Phone Number Already Registered!", Toast.LENGTH_SHORT).show();
+                            if(!newUser) {
+                                Toast.makeText(SignUp.this, "Phone Number Already Registered!", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else {
 
                             mDialog.dismiss();
+                            newUser = true;
                             User user = new User(edtEmail.getText().toString(),edtName.getText().toString(),edtPassword.getText().toString());
                             table_user.child(edtPhone.getText().toString()).setValue(user);
                             Toast.makeText(SignUp.this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
