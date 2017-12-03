@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="extras">
+        <item>Herb Garlic</item>
+        <item>Spinach</item>
+        <item>Flour</item>
+        <item>Jalapeño Cheddar</item>
         <item>Refried Beans</item>
         <item>Pinto Beans</item>
         <item>Black Beans</item>
@@ -10,7 +14,7 @@
         <item>Tomatoes</item>
         <item>Lettuce</item>
         <item>Red Onions</item>
-        <item> Yellow Corn</item>
+        <item>Yellow Corn</item>
         <item>Black Olives</item>
         <item>Fresh Jalapeños</item>
         <item>Pickled Jalapeños</item>
