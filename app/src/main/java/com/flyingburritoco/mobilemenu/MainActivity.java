@@ -1,6 +1,7 @@
 package com.flyingburritoco.mobilemenu;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
 
         txtSlogan = (TextView)findViewById(R.id.txtSlogan);
-        //Typeface face = Typeface.createFromAsset(getAssets(),"fonts/<fontname>");
-        //txtSlogan.setTypeface(face);
+        Typeface face = Typeface.createFromAsset(getAssets(),"font/meat_buckets.ttf");
+        txtSlogan.setTypeface(face);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
