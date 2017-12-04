@@ -116,7 +116,7 @@ public class Cart extends AppCompatActivity {
     private void showPlaceDialog(){
         final Dialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Extras!");
+        builder.setTitle("Select Location");
         builder.setSingleChoiceItems(R.array.locations, 0, null)
                 .setIcon(R.drawable.ic_restaurant_black_24dp)
                 .setPositiveButton("ENTER", new DialogInterface.OnClickListener() {
