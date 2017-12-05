@@ -165,7 +165,7 @@ public class Cart extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //Calculate Total Price
-        int total = 0;
+        double total = 0;
         for(Order order:cart){
             cartStatus = "full";
             total += (Double.parseDouble(order.getPrice())) * (Double.parseDouble(order.getQuantity()));
