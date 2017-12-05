@@ -65,7 +65,8 @@ public class FoodDetail extends AppCompatActivity {
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                extraDialog();
+                optionDialog();
+                //extraDialog();
                 //extraIngredients();
             }
         });
@@ -80,9 +81,43 @@ public class FoodDetail extends AppCompatActivity {
         }
     }
 
+    public void optionDialog(){
+        Dialog dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Tortillas!");
+        builder.setSingleChoiceItems(R.array.tortillas, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String[] extraList = getResources().getStringArray(R.array.tortillas);
+                extra = (extraList[i] + " Tortilla");
+            }
+        })
+                .setIcon(R.drawable.ic_restaurant_black_24dp)
+                .setPositiveButton("Next", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(!extra.isEmpty()){
+                            extraDialog();
+                        }
+                        else{
+                            Toast.makeText(FoodDetail.this, "Please Select A Tortilla.", Toast.LENGTH_SHORT).show();
+                            optionDialog();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+        dialog = builder.create();
+        dialog.show();
+    }
     public void extraDialog(){
         Dialog dialog;
-        final ArrayList extraSelected = new ArrayList();
+        final ArrayList<Integer> extraSelected = new ArrayList<>();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Extras!");
         builder.setMultiChoiceItems(R.array.extras, null, new DialogInterface.OnMultiChoiceClickListener() {
@@ -110,8 +145,8 @@ public class FoodDetail extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
-        dialog = builder.create();
-        dialog.show();
+                dialog = builder.create();
+                dialog.show();
 
     }
 
@@ -122,7 +157,7 @@ public class FoodDetail extends AppCompatActivity {
                 extra = String.valueOf(extraList[(int) element]);
             }
             else {
-                extra += (", " + extraList[(int) element]);
+                extra = extra.concat(", " + extraList[(int) element]);
             }
         }
     }

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="extras">
-        <item>Herb Garlic</item>
-        <item>Spinach</item>
-        <item>Flour</item>
-        <item>Jalapeño Cheddar</item>
         <item>Refried Beans</item>
         <item>Pinto Beans</item>
         <item>Black Beans</item>
@@ -27,6 +23,12 @@
         <item>Hot Salsa</item>
         <item>Pico de Gallo</item>
         <item>Salsa of the Day</item>
+    </string-array>
+    <string-array name="tortillas">
+        <item>Herb Garlic</item>
+        <item>Spinach</item>
+        <item>Flour</item>
+        <item>Jalapeño Cheddar</item>
     </string-array>
     <string-array name="locations">
         <item>540 W. Dickson St. Fayetteville, AR 72701</item>
