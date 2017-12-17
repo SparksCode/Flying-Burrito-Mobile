@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +38,8 @@ public class Cart extends AppCompatActivity {
     DatabaseReference requests;
 
     TextView txtTotalPrice;
-    FButton btnPlace;
-    FButton btnCancel;
+    Button btnPlace;
+    Button btnCancel;
 
     List<Order> cart = new ArrayList<>();
     CartAdapter adapter;
@@ -63,8 +64,8 @@ public class Cart extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         txtTotalPrice = (TextView)findViewById(R.id.total);
-        btnPlace = (FButton)findViewById(R.id.btnPlaceOrder);
-        btnCancel = (FButton)findViewById(R.id.btnCancelOrder);
+        btnPlace = (Button) findViewById(R.id.btnPlaceOrder);
+        btnCancel = (Button)findViewById(R.id.btnCancelOrder);
 
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,7 +25,15 @@
         <activity android:name=".FoodList" />
         <activity android:name=".FoodDetail" />
         <activity android:name=".Cart" />
-        <activity android:name=".OrderStatus"></activity>
+        <activity android:name=".OrderStatus" />
+        <activity
+            android:name=".testThis"
+            android:label="@string/title_activity_test_this"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".UserSettings"
+            android:label="@string/title_activity_user_settings"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

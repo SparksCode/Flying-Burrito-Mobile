@@ -24,7 +24,7 @@ import java.util.Locale;
  */
 class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    public TextView itemName, itemPrice;
+    public TextView itemName, itemExtas, itemPrice;
     public ImageView itemCount;
 
     private ItemClickListener itemClickListener;
@@ -35,6 +35,14 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
     public void setItemName(TextView itemName) {
         this.itemName = itemName;
+    }
+
+    public TextView getItemExtas() {
+        return itemExtas;
+    }
+
+    public void setItemExtas(TextView itemExtas) {
+        this.itemExtas = itemExtas;
     }
 
     public TextView getItemPrice() {
@@ -56,6 +64,7 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
     public CartViewHolder(View itemView) {
         super(itemView);
         itemName = itemView.findViewById(R.id.itemName);
+        itemExtas = itemView.findViewById(R.id.itemExtras);
         itemPrice = itemView.findViewById(R.id.itemPrice);
         itemCount = itemView.findViewById(R.id.itemCount);
     }
@@ -95,6 +104,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
         double price = (Double.parseDouble(listData.get(position).getPrice()))*(Double.parseDouble(listData.get(position).getQuantity()));
         holder.itemPrice.setText(fmt.format(price));
         holder.itemName.setText(listData.get(position).getProductName());
+        holder.itemExtas.setText(listData.get(position).getExtras());
     }
 
     @Override

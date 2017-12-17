@@ -38,22 +38,18 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
 
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/btnSignUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Sign Up"
+            android:text="Sign In"
             android:textColor="@android:color/white"
-            app:buttonColor="@color/btnSignUp"
-            app:cornerRadius="3dp"
-            app:shadowColor="@android:color/darker_gray"
-            app:shadowEnabled="true"
-            app:shadowHeight="1.5dp"
-            tools:ignore="HardcodedText" />
+            android:background="@color/btnSignIn"
+            tools:ignore="HardcodedText"/>
 
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/btnSignIn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -61,12 +57,8 @@
             android:layout_weight="1"
             android:text="Sign In"
             android:textColor="@android:color/white"
-            app:buttonColor="@color/btnSignIn"
-            app:cornerRadius="3dp"
-            app:shadowColor="@android:color/darker_gray"
-            app:shadowEnabled="true"
-            app:shadowHeight="1.5dp"
-            tools:ignore="HardcodedText" />
+            android:background="@color/btnSignIn"
+            tools:ignore="HardcodedText"/>
 
     </LinearLayout>
 </RelativeLayout>

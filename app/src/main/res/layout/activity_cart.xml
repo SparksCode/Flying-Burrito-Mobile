@@ -58,7 +58,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true">
 
-                <info.hoang8f.widget.FButton
+                <Button
                     android:id="@+id/btnPlaceOrder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -66,14 +66,10 @@
                     android:layout_weight="1"
                     android:text="Place Order"
                     android:textColor="@android:color/white"
-                    app:buttonColor="@color/colorPrimary"
-                    app:cornerRadius="3dp"
-                    app:shadowColor="@color/colorAccent"
-                    app:shadowEnabled="true"
-                    app:shadowHeight="1.5dp"
+                    android:background="@color/colorPrimary"
                     tools:ignore="HardcodedText" />
 
-                <info.hoang8f.widget.FButton
+                <Button
                     android:id="@+id/btnCancelOrder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -81,11 +77,7 @@
                     android:layout_weight="1"
                     android:text="Cancel Order"
                     android:textColor="@android:color/white"
-                    app:buttonColor="@color/colorPrimary"
-                    app:cornerRadius="3dp"
-                    app:shadowColor="@color/colorAccent"
-                    app:shadowEnabled="true"
-                    app:shadowHeight="1.5dp"
+                    android:background="@color/colorPrimary"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
