@@ -109,6 +109,9 @@
     <string name="navOrders">Orders</string>
     <string name="navExit">Sign Out</string>
     <string name="navSettings">Settings</string>
+    <string name="orderHeader">Your Order</string>
+    <string name="cancelOrder">Cancel Order</string>
+    <string name="placeOrder">Place Order</string>
 
 
 </resources>

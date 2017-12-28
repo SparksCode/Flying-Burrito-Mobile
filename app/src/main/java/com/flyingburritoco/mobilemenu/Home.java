@@ -104,11 +104,11 @@ public class Home extends AppCompatActivity
                         Toast.makeText(Home.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
 
                         //Get CategoryId and send to FoodList
-                        Intent testThis = new Intent(Home.this, testThis.class);
-                        testThis.putExtra("CategoryId",adapter.getRef(position).getKey());
-                        testThis.putExtra("CategoryName", clickItem.getName());
+                        Intent FoodList = new Intent(Home.this, FoodList.class);
+                        FoodList.putExtra("CategoryId",adapter.getRef(position).getKey());
+                        FoodList.putExtra("CategoryName", clickItem.getName());
 
-                        startActivity(testThis);
+                        startActivity(FoodList);
                     }
                 });
             }
