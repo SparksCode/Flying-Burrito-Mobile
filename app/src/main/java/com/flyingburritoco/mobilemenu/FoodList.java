@@ -3,7 +3,6 @@ package com.flyingburritoco.mobilemenu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -99,8 +98,6 @@ public class FoodList extends AppCompatActivity
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(com.flyingburritoco.mobilemenu.FoodList.this, ""+current.getName(), Toast.LENGTH_SHORT).show();
-
                         //Get FoodId and send to FoodDetail
                         Intent foodDetail = new Intent(com.flyingburritoco.mobilemenu.FoodList.this, FoodDetail.class);
                         foodDetail.putExtra("FoodId",adapter.getRef(position).getKey());
