@@ -14,9 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.flyingburritoco.mobilemenu.Common.Common;
 
 public class UserSettings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView txtFullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,11 @@ public class UserSettings extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Set name for user
+        View headerView = navigationView.getHeaderView(0);
+        txtFullName = headerView.findViewById(R.id.txtFullName);
+        txtFullName.setText(Common.currentUser.getName());
     }
 
     @Override
@@ -73,7 +83,7 @@ public class UserSettings extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_menu) {
-            Intent menuIntent = new Intent(UserSettings.this, Menu.class);
+            Intent menuIntent = new Intent(UserSettings.this, Home.class);
             startActivity(menuIntent);
         } else if (id == R.id.nav_cart) {
             Intent cartIntent = new Intent(UserSettings.this, Cart.class);

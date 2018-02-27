@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_home"
+        app:headerLayout="@layout/nav_header_food_list"
 
         android:background="@color/overlayBackground"
         app:itemTextColor="@android:color/white"
