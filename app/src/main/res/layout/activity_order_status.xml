@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     android:background="@drawable/background1"
-    tools:context="com.flyingburritoco.mobilemenu.OrderStatus">
+    tools:openDrawer="start">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listOrders"
-        android:background="@android:color/transparent"
+    <include
+        layout="@layout/app_bar_order_status"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-    </android.support.v7.widget.RecyclerView>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_home"
 
-    <Button
-        android:id="@+id/exitOrders"
-        android:text="Exit Orders"
-        android:textColor="@android:color/white"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimary"
-        tools:ignore="HardcodedText" />
+        android:background="@color/overlayBackground"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white"
 
-</RelativeLayout>
+        app:menu="@menu/activity_home_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
