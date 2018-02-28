@@ -54,7 +54,7 @@ public class FoodList extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -92,7 +92,7 @@ public class FoodList extends AppCompatActivity
                 Picasso.with(getBaseContext()).load(model.getImage())
                         .into(viewHolder.imageView);
 
-                final Food current = model;
+                //final Food current = model;
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override

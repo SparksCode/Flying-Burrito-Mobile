@@ -26,8 +26,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-import info.hoang8f.widget.FButton;
-
 public class Cart extends AppCompatActivity {
 
 
@@ -58,14 +56,14 @@ public class Cart extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         requests = database.getReference("Request");
 
-        recyclerView = (RecyclerView)findViewById(R.id.listCart);
+        recyclerView = findViewById(R.id.listCart);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        txtTotalPrice = (TextView)findViewById(R.id.total);
-        btnPlace = (Button) findViewById(R.id.btnPlaceOrder);
-        btnCancel = (Button)findViewById(R.id.btnCancelOrder);
+        txtTotalPrice = findViewById(R.id.total);
+        btnPlace = findViewById(R.id.btnPlaceOrder);
+        btnCancel = findViewById(R.id.btnCancelOrder);
 
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override
