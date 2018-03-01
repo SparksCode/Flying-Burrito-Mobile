@@ -16,5 +16,32 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
         tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_name"
+            android:text="@string/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="34sp" />
+        <TextView
+            android:id="@+id/text_phone"
+            android:text="@string/phoneDigits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="34sp" />
+        <TextView
+            android:id="@+id/text_email"
+            android:text="@string/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="34sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

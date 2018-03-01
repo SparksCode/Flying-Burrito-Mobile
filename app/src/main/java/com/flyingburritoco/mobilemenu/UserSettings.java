@@ -22,19 +22,23 @@ public class UserSettings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView txtFullName;
+    TextView name, phone, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
+        //toolbar.setTitle(Common.currentUser.getName());
+        toolbar.setTitle(R.string.UserSettings);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Action not yet implemented", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -52,6 +56,15 @@ public class UserSettings extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         txtFullName = headerView.findViewById(R.id.txtFullName);
         txtFullName.setText(Common.currentUser.getName());
+
+        //Update Textviews
+        name = findViewById(R.id.text_name);
+        phone = findViewById(R.id.text_phone);
+        email = findViewById(R.id.text_email);
+
+        name.setText(Common.currentUser.getName());
+        phone.setText(Common.currentUser.getPhone());
+        email.setText(Common.currentUser.getEmail());
     }
 
     @Override

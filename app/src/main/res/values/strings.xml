@@ -23,6 +23,7 @@
     <string name="phoneDigits">1234567890</string>
     <string name="address">Address</string>
     <string name="name">John Smith</string>
+    <string name="email">johnsmith@email.com</string>
 
     <string name="menu">Name of Menu</string>
     <string name="food">Name of Food</string>
@@ -112,6 +113,7 @@
     <string name="orderHeader">Your Order</string>
     <string name="cancelOrder">Cancel Order</string>
     <string name="placeOrder">Place Order</string>
+    <string name="UserSettings">User Settings</string>
 
 
 </resources>
